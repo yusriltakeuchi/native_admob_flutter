@@ -21,7 +21,7 @@ class MobileAds {
   const MobileAds._();
 
   // Unit ids
-  static String? nativeAdUnitId;
+  static String nativeAdUnitId;
   static String get nativeAdTestUnitId => Platform.isAndroid
       ? 'ca-app-pub-3940256099942544/2247696110'
       : 'ca-app-pub-3940256099942544/3986624511';
@@ -29,12 +29,12 @@ class MobileAds {
       ? 'ca-app-pub-3940256099942544/1044960115'
       : 'ca-app-pub-3940256099942544/2521693316';
 
-  static String? bannerAdUnitId;
+  static String bannerAdUnitId;
   static String get bannerAdTestUnitId => Platform.isAndroid
       ? 'ca-app-pub-3940256099942544/6300978111'
       : 'ca-app-pub-3940256099942544/2934735716';
 
-  static String? interstitialAdUnitId;
+  static String interstitialAdUnitId;
   static String get interstitialAdTestUnitId => Platform.isAndroid
       ? 'ca-app-pub-3940256099942544/1033173712'
       : 'ca-app-pub-3940256099942544/4411468910';
@@ -42,17 +42,17 @@ class MobileAds {
       ? 'ca-app-pub-3940256099942544/8691691433'
       : 'ca-app-pub-3940256099942544/5135589807';
 
-  static String? rewardedAdUnitId;
+  static String rewardedAdUnitId;
   static String get rewardedAdTestUnitId => Platform.isAndroid
       ? 'ca-app-pub-3940256099942544/5224354917'
       : 'ca-app-pub-3940256099942544/1712485313';
 
-  static String? appOpenAdUnitId;
+  static String appOpenAdUnitId;
   static String get appOpenAdTestUnitId => Platform.isAndroid
       ? 'ca-app-pub-3940256099942544/3419835294'
       : 'ca-app-pub-3940256099942544/5662855259';
 
-  static String? rewardedInterstitialAdUnitId;
+  static String rewardedInterstitialAdUnitId;
   static String get rewardedInterstitialAdTestUnitId => Platform.isAndroid
       ? 'ca-app-pub-3940256099942544/5354046379'
       : 'ca-app-pub-3940256099942544/6978759866';
@@ -103,13 +103,13 @@ class MobileAds {
   /// You can find a complete example [here](https://github.com/bdlukaa/native_admob_flutter/blob/master/example/lib/main.dart)\
   /// For more info on intialization, read the [documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Initialize#initialize-the-mobile-ads-sdk)
   static Future<void> initialize({
-    String? nativeAdUnitId,
-    String? bannerAdUnitId,
-    String? interstitialAdUnitId,
-    String? rewardedAdUnitId,
-    String? appOpenAdUnitId,
-    String? rewardedInterstitialAdUnitId,
-    bool? useHybridComposition,
+    String nativeAdUnitId,
+    String bannerAdUnitId,
+    String interstitialAdUnitId,
+    String rewardedAdUnitId,
+    String appOpenAdUnitId,
+    String rewardedInterstitialAdUnitId,
+    bool useHybridComposition,
   }) async {
     assertPlatformIsSupported();
     WidgetsFlutterBinding.ensureInitialized();
@@ -150,7 +150,7 @@ class MobileAds {
     ]);
 
     // Make sure the version is supported
-    _version = (await _pluginChannel.invokeMethod<int>('initialize'))!;
+    _version = (await _pluginChannel.invokeMethod<int>('initialize'));
     assertVersionIsSupported(false);
     if (Platform.isAndroid) {
       // hybrid composition is enabled in android 19 and can't be disabled
@@ -175,7 +175,7 @@ class MobileAds {
   /// Check if the test id that is being used is for testing or not.
   ///
   /// [kReleaseMode] and [kDebugMode] are considered as test mode
-  static void _debugCheckIsTestId(String? id, List<String> testIds) {
+  static void _debugCheckIsTestId(String id, List<String> testIds) {
     if (!testIds.contains(id ?? '') && !kReleaseMode)
       print(
         'It is highly recommended to use test ads in for testing instead of production ads'

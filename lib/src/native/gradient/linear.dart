@@ -9,8 +9,8 @@ class AdLinearGradient extends AdGradient {
   /// - You must specify at least two colors.
   /// - The default orientation is `left_right` (left to right)
   AdLinearGradient({
-    AdGradientOrientation? orientation,
-    required List<Color> colors,
+    AdGradientOrientation orientation,
+    @required List<Color> colors,
   }) : super(
           type: AdGradient.LINEAR,
           colors: colors,

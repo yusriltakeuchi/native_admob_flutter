@@ -10,10 +10,10 @@ class NativeAdOptions {
   static const int MEDIA_ASPECT_RATIO_SQUARE = 4;
 
   NativeAdOptions({
-    bool? requestCustomMuteThisAd,
-    int? adChoichesPlacement,
-    int? mediaAspectRatio,
-    VideoOptions? videoOptions,
+    bool requestCustomMuteThisAd,
+    int adChoichesPlacement,
+    int mediaAspectRatio,
+    VideoOptions videoOptions,
   }) {
     this.requestCustomMuteThisAd = requestCustomMuteThisAd;
     this.adChoicesPlacement = adChoicesPlacement;
@@ -22,7 +22,7 @@ class NativeAdOptions {
   }
   bool _requestCustomMuteThisAd = false;
   bool get requestCustomMuteThisAd => _requestCustomMuteThisAd;
-  set requestCustomMuteThisAd(bool? request) =>
+  set requestCustomMuteThisAd(bool request) =>
       _requestCustomMuteThisAd = request ?? false;
 
   int _adChoichesPlacement = ADCHOICES_TOP_RIGHT;
@@ -60,7 +60,7 @@ class NativeAdOptions {
   /// 3. `NATIVE_MEDIA_ASPECT_RATIO_SQUARE`
   /// 4. `NATIVE_MEDIA_ASPECT_RATIO_ANY`
   int get mediaAspectRatio => _mediaAspectRatio;
-  set mediaAspectRatio(int? aspect) {
+  set mediaAspectRatio(int aspect) {
     if (aspect != null) {
       assert(
         [

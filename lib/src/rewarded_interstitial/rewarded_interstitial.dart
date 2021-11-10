@@ -63,11 +63,11 @@ class RewardedInterstitialAd extends LoadShowAd<RewardedAdEvent> {
   ///
   /// For more info, read the [documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Creating-a-rewarded-interstitial-ad#create-a-rewarded-ad)
   RewardedInterstitialAd({
-    String? unitId,
+    String unitId,
     Duration loadTimeout = kDefaultLoadTimeout,
     Duration timeout = kDefaultAdTimeout,
     bool nonPersonalizedAds = kDefaultNonPersonalizedAds,
-    ServerSideVerificationOptions? serverSideVerificationOptions =
+    ServerSideVerificationOptions serverSideVerificationOptions =
         kServerSideVerification,
   }) : super(
           unitId: unitId,
@@ -156,22 +156,22 @@ class RewardedInterstitialAd extends LoadShowAd<RewardedAdEvent> {
       {
 
       /// The ad unit id. If null, uses [MobileAds.rewardedAdUnitId]
-      String? unitId,
+      String unitId,
 
       /// Force to load an ad even if another is already avaiable
       bool force = false,
 
       /// The timeout of this ad. If null, defaults to 1 minute
-      Duration? timeout,
+      Duration timeout,
 
       /// Whether non-personalized ads should be enabled
-      bool? nonPersonalizedAds,
+      bool nonPersonalizedAds,
 
       /// The keywords of the ad
       List<String> keywords = const [],
 
       ///SSV Info - Such as userId and customData
-      ServerSideVerificationOptions? serverSideVerificationOptions}) async {
+      ServerSideVerificationOptions serverSideVerificationOptions}) async {
     ensureAdNotDisposed();
     assertMobileAdsIsInitialized();
     if (!debugCheckAdWillReload(isLoaded, force)) return false;
@@ -192,7 +192,7 @@ class RewardedInterstitialAd extends LoadShowAd<RewardedAdEvent> {
           });
         return false;
       },
-    ))!;
+    ));
     if (isLoaded) lastLoadedTime = DateTime.now();
     return isLoaded;
   }
@@ -219,6 +219,6 @@ class RewardedInterstitialAd extends LoadShowAd<RewardedAdEvent> {
     ensureAdNotDisposed();
     assertMobileAdsIsInitialized();
     ensureAdAvailable();
-    return (await channel.invokeMethod<bool>('showAd'))!;
+    return (await channel.invokeMethod<bool>('showAd'));
   }
 }

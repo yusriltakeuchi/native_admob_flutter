@@ -7,7 +7,7 @@
 /// which you can get by calling `MobileAds.nativeAdVideoTestUnitId`
 class MediaContent {
   /// Indicates whether the media content has video content (`true`) or not (`false`).
-  final bool? hasVideoContent;
+  final bool hasVideoContent;
 
   /// The aspect ratio of the media content, which can be an image or a video.
   /// This usually corresponds to the aspect ratio set in `options` ([NativeAdOptions]):
@@ -17,10 +17,10 @@ class MediaContent {
   /// - MEDIA_ASPECT_RATIO_SQUARE: Usually 1:1
   ///
   /// For more info, [read the documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Native-Ad-Options#mediaaspectratio)
-  final double? aspectRatio;
+  final double aspectRatio;
 
   /// The duration of the video, if avaiable
-  final Duration? duration;
+  final Duration duration;
 
   /// Creates a new [MediaContent] object
   const MediaContent({

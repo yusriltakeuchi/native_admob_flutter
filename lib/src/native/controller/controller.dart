@@ -110,12 +110,12 @@ class NativeAdController extends LoadShowAd<NativeAdEvent>
   /// For more info, [read the documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Initialize#always-test-with-test-ads)
   static String get videoTestUnitId => MobileAds.nativeAdVideoTestUnitId;
 
-  MediaContent? _mediaContent;
+  MediaContent _mediaContent;
 
   /// Provides media content information.
   ///
   /// This will be null until load is complete
-  MediaContent? get mediaContent => _mediaContent;
+  MediaContent get mediaContent => _mediaContent;
 
   List<String> _muteThisAdReasons = [];
 
@@ -206,50 +206,50 @@ class NativeAdController extends LoadShowAd<NativeAdEvent>
   /// Check if the controller is attached to a `NativeAd`
   bool get isAttached => super.isAttached;
 
-  String? _headline;
-  String? _body;
-  String? _price;
-  String? _store;
-  String? _callToAction;
-  String? _advertiser;
-  String? _iconUri;
-  List<String>? _imagesUri;
+  String _headline;
+  String _body;
+  String _price;
+  String _store;
+  String _callToAction;
+  String _advertiser;
+  String _iconUri;
+  List<String> _imagesUri;
 
   /// The title text of the ad. If [isAvailable] is true,
   /// this is always non-null.
-  String? get headline => _headline;
+  String get headline => _headline;
 
   /// The body text of the ad. If [isAvailable] is true,
   /// this is always non-null.
-  String? get body => _body;
+  String get body => _body;
 
   /// The price of the product announced on the ad. This
   /// may be null even if [isAvailable] is true.
-  String? get price => _price;
+  String get price => _price;
 
   /// The store that is announcing the product on the ad.
   /// This may be null even if [isAvailable] is true.
-  String? get store => _store;
+  String get store => _store;
 
   /// The text of the button. If [isAvailable] is true,
   /// this is always non-null.
-  String? get callToAction => _callToAction;
+  String get callToAction => _callToAction;
 
   /// The advertiser that is announcing the ad. This
   /// may be null even if [isAvailable] is true.
-  String? get advertiser => _advertiser;
+  String get advertiser => _advertiser;
 
   /// The url of the icon image. This may be null even if
   /// [isAvailable] is true.
-  String? get iconUri => _iconUri;
+  String get iconUri => _iconUri;
 
   /// The urls of the media. If [isAvailable] is true, this
   /// is always non-null.
-  List<String>? get imagesUri => _imagesUri;
+  List<String> get imagesUri => _imagesUri;
 
   /// Creates a new native ad controller
   NativeAdController({
-    String? unitId,
+    String unitId,
     Duration loadTimeout = kDefaultLoadTimeout,
     Duration timeout = kDefaultAdTimeout,
   }) : super(
@@ -328,7 +328,7 @@ class NativeAdController extends LoadShowAd<NativeAdEvent>
         break;
       case 'onAdLoaded':
         isLoaded = true;
-        final arguments = call.arguments! as Map;
+        final arguments = call.arguments  as Map;
         arguments.forEach((key, value) {
           final args = value;
           switch (key) {
@@ -374,17 +374,17 @@ class NativeAdController extends LoadShowAd<NativeAdEvent>
   /// For more info, [read the documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Using-the-controller-and-listening-to-native-events#reloading-the-ad)
   Future<bool> load({
     /// The ad unit id. If null, uses [MobileAds.nativeAdUnitId]
-    String? unitId,
-    NativeAdOptions? options,
+    String unitId,
+    NativeAdOptions options,
 
     /// Force to load an ad even if another is already avaiable
     bool force = false,
 
     /// The timeout of this ad. If null, defaults to 1 minute
-    Duration? timeout,
+    Duration timeout,
 
     /// Whether non-personalized ads (ads that are not based on a user’s past behavior) should be enabled.
-    bool? nonPersonalizedAds,
+    bool nonPersonalizedAds,
 
     /// {@macro ads.keywords}
     List<String> keywords = const [],
@@ -407,7 +407,7 @@ class NativeAdController extends LoadShowAd<NativeAdEvent>
           });
         return false;
       },
-    ))!;
+    ));
     if (isLoaded) lastLoadedTime = DateTime.now();
     return isLoaded;
   }
@@ -420,7 +420,7 @@ class NativeAdController extends LoadShowAd<NativeAdEvent>
   /// [AssertionError] is thrown.
   ///
   /// Fore more info, [read the documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Custom-mute-this-ad)
-  Future<void> muteThisAd([int? reason]) {
+  Future<void> muteThisAd([int reason]) {
     ensureAdNotDisposed();
     if (reason != null)
       assert(!reason.isNegative, 'You must specify a valid reason');

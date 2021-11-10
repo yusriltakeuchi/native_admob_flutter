@@ -3,7 +3,7 @@ import 'layout_builder/layout_builder.dart';
 
 /// Default banner ad layout
 ///
-/// ![Banner Layout Builder Preview](https://github.com/bdlukaa/native_admob_flutter/blob/master/screenshots/native/banner_size_ad.png?raw=true)
+/// ![Banner Layout Builder Preview](https://github.com/bdlukaa/native_admob_flutter/blob/master/screenshots/native/banner_size_ad.pngraw=true)
 ///
 /// For more info, read the [documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Creating-a-native-ad#creating-a-layout-builder)
 AdLayoutBuilder get adBannerLayoutBuilder => (ratingBar, media, icon, headline,
@@ -130,16 +130,16 @@ extension colorExtension on Color {
 
 class AdBorderRadius {
   /// The top-right radius
-  final double? topRight;
+  final double topRight;
 
   /// The top-left radius
-  final double? topLeft;
+  final double topLeft;
 
   /// The bottom-right radius
-  final double? bottomRight;
+  final double bottomRight;
 
   /// The bottom-left radius
-  final double? bottomLeft;
+  final double bottomLeft;
 
   const AdBorderRadius({
     this.topLeft,
@@ -158,7 +158,7 @@ class AdBorderRadius {
 
   /// Creates a vertically symmetric border radius where the top
   /// and bottom sides of the rectangle have the same value.
-  static AdBorderRadius vertical({double? top, double? bottom}) =>
+  static AdBorderRadius vertical({double top, double bottom}) =>
       AdBorderRadius(
         topLeft: top,
         topRight: top,
@@ -168,7 +168,7 @@ class AdBorderRadius {
 
   /// Creates a horizontally symmetrical border radius where the left
   /// and right sides of the rectangle have the same value.
-  static AdBorderRadius horizontal({double? left, double? right}) =>
+  static AdBorderRadius horizontal({double left, double right}) =>
       AdBorderRadius(
         topLeft: left,
         bottomLeft: left,

@@ -10,29 +10,29 @@ const kDefaultAndroidViewDelay = Duration(milliseconds: 250);
 
 class AndroidPlatformView extends StatefulWidget {
   AndroidPlatformView({
-    Key? key,
-    required this.params,
-    required this.viewType,
-    bool? useHybridComposition,
+    Key key,
+    @required this.params,
+    @required this.viewType,
+    bool useHybridComposition,
     this.onCreated,
     this.delayToShow,
   })  : this.useHybridComposition =
             useHybridComposition ?? MobileAds.useHybridComposition,
         super(key: key);
 
-  final PlatformViewCreatedCallback? onCreated;
+  final PlatformViewCreatedCallback onCreated;
   final String viewType;
   final bool useHybridComposition;
   final Map<String, dynamic> params;
 
-  final Duration? delayToShow;
+  final Duration delayToShow;
 
   @override
   _AndroidPlatformViewState createState() => _AndroidPlatformViewState();
 }
 
 class _AndroidPlatformViewState extends State<AndroidPlatformView> {
-  late bool visible;
+  bool visible;
 
   @override
   void initState() {

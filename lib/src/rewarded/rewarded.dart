@@ -106,10 +106,10 @@ enum RewardedAdEvent {
 
 class RewardItem {
   /// Returns the reward amount.
-  final double? amount;
+  final double amount;
 
   /// Returns the type of the reward.
-  final String? type;
+  final String type;
 
   const RewardItem({this.amount, this.type});
 
@@ -182,11 +182,11 @@ class RewardedAd extends LoadShowAd<RewardedAdEvent> {
   ///
   /// For more info, read the [documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Creating-a-rewarded-ad#create-a-rewarded-ad)
   RewardedAd({
-    String? unitId,
+    String unitId,
     Duration loadTimeout = kDefaultLoadTimeout,
     Duration timeout = kDefaultAdTimeout,
     bool nonPersonalizedAds = kDefaultNonPersonalizedAds,
-    ServerSideVerificationOptions? serverSideVerificationOptions =
+    ServerSideVerificationOptions serverSideVerificationOptions =
         kServerSideVerification,
   }) : super(
           unitId: unitId,
@@ -210,7 +210,7 @@ class RewardedAd extends LoadShowAd<RewardedAdEvent> {
   /// @override
   /// void dispose() {
   ///   super.dispose();
-  ///   rewardedAd?.dispose();
+  ///   rewardedAd.dispose();
   /// }
   /// ```
   void dispose() {
@@ -271,22 +271,22 @@ class RewardedAd extends LoadShowAd<RewardedAdEvent> {
       {
 
       /// The ad unit id. If null, uses [MobileAds.rewardedAdUnitId]
-      String? unitId,
+      String unitId,
 
       /// Force to load an ad even if another is already avaiable
       bool force = false,
 
       /// The timeout of this ad. If null, defaults to 1 minute
-      Duration? timeout,
+      Duration timeout,
 
       /// Whether non-personalized ads should be enabled
-      bool? nonPersonalizedAds,
+      bool nonPersonalizedAds,
 
       /// The keywords of the ad
       List<String> keywords = const [],
 
       ///SSV Information such as userId and customData
-      ServerSideVerificationOptions? serverSideVerificationOptions}) async {
+      ServerSideVerificationOptions serverSideVerificationOptions}) async {
     ensureAdNotDisposed();
     assertMobileAdsIsInitialized();
     if (!debugCheckAdWillReload(isLoaded, force)) return false;
@@ -307,7 +307,7 @@ class RewardedAd extends LoadShowAd<RewardedAdEvent> {
           });
         return false;
       },
-    ))!;
+    ));
     if (isLoaded) lastLoadedTime = DateTime.now();
     return isLoaded;
   }
@@ -334,6 +334,6 @@ class RewardedAd extends LoadShowAd<RewardedAdEvent> {
     ensureAdNotDisposed();
     assertMobileAdsIsInitialized();
     ensureAdAvailable();
-    return (await channel.invokeMethod<bool>('show'))!;
+    return (await channel.invokeMethod<bool>('show'));
   }
 }

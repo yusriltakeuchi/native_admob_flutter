@@ -65,7 +65,7 @@ class InterstitialAd extends LoadShowAd<FullScreenAdEvent> {
 
   /// Creates a new interstitial ad controller
   InterstitialAd({
-    String? unitId,
+    String unitId,
     Duration loadTimeout = kDefaultLoadTimeout,
     Duration timeout = kDefaultAdTimeout,
     bool nonPersonalizedAds = kDefaultNonPersonalizedAds,
@@ -144,14 +144,14 @@ class InterstitialAd extends LoadShowAd<FullScreenAdEvent> {
   ///
   /// For more info, read the [documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Creating-an-interstitial-ad#load-the-ad)
   Future<bool> load({
-    String? unitId,
+    String unitId,
     bool force = false,
 
     /// The timeout of this ad. If null, defaults to 1 minute
-    Duration? timeout,
+    Duration timeout,
 
     /// Whether non-personalized ads should be enabled
-    bool? nonPersonalizedAds,
+    bool nonPersonalizedAds,
 
     /// The keywords of the ad
     List<String> keywords = const [],
@@ -175,7 +175,7 @@ class InterstitialAd extends LoadShowAd<FullScreenAdEvent> {
           });
         return false;
       },
-    ))!;
+    ));
     if (isLoaded) lastLoadedTime = DateTime.now();
     return isLoaded;
   }
@@ -191,6 +191,6 @@ class InterstitialAd extends LoadShowAd<FullScreenAdEvent> {
     ensureAdNotDisposed();
     assertMobileAdsIsInitialized();
     ensureAdAvailable();
-    return (await channel.invokeMethod<bool>('show'))!;
+    return (await channel.invokeMethod<bool>('show'));
   }
 }

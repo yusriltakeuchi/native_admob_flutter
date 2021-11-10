@@ -63,7 +63,7 @@ void assertVersionIsSupported([bool usePlatformView = true]) {
   }
 }
 
-bool debugCheckAdWillReload([bool? isLoaded, bool? force]) {
+bool debugCheckAdWillReload([bool isLoaded, bool force]) {
   isLoaded ??= false;
   force ??= false;
   if (isLoaded && !force) {
@@ -105,17 +105,17 @@ class AdError {
   /// - Internal error (Something happened internally; for instance, an invalid response was received from the ad server): 0
   ///
   /// For more info, read the [documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Ad-error-codes)
-  final int? code;
+  final int code;
 
   /// Gets an error message. For example "Account not approved yet".
   /// See [this](https://support.google.com/admob/answer/9905175) for explanations of
   /// common errors
-  final String? message;
+  final String message;
 
   /// Creates a new AdError instance
   const AdError({
-    required this.code,
-    required this.message,
+    @required this.code,
+    @required this.message,
   });
 
   /// Retrieve an [AdError] from a json
@@ -166,7 +166,7 @@ mixin AttachableMixin {
 const Duration kDefaultLoadTimeout = Duration(minutes: 1);
 const Duration kDefaultAdTimeout = Duration(minutes: 30);
 const bool kDefaultNonPersonalizedAds = false;
-const ServerSideVerificationOptions? kServerSideVerification = null;
+const ServerSideVerificationOptions kServerSideVerification = null;
 
 abstract class LoadShowAd<T> with UniqueKeyMixin {
   @protected
@@ -183,7 +183,7 @@ abstract class LoadShowAd<T> with UniqueKeyMixin {
 
   /// Channel to communicate with controller
   // @protected
-  late MethodChannel channel;
+  MethodChannel channel;
 
   bool _loaded = false;
 
@@ -196,13 +196,13 @@ abstract class LoadShowAd<T> with UniqueKeyMixin {
   final Duration timeout;
 
   @protected
-  DateTime? lastLoadedTime;
+  DateTime lastLoadedTime;
 
   /// Check if the time is available. If ad is not loaded, returns false
   /// If it has been the time of [timeout] since the last load, returns false
   bool get isAvailable {
     if (!isLoaded || lastLoadedTime == null) return false;
-    final difference = lastLoadedTime!.difference(DateTime.now());
+    final difference = lastLoadedTime.difference(DateTime.now());
     if (difference > timeout) return false;
     return true;
   }
@@ -219,7 +219,7 @@ abstract class LoadShowAd<T> with UniqueKeyMixin {
   bool get isDisposed => _disposed;
 
   /// The unit id used on this ad. Can be null
-  final String? unitId;
+  final String unitId;
 
   /// The ad will stop loading after a specified time.
   ///
@@ -231,7 +231,7 @@ abstract class LoadShowAd<T> with UniqueKeyMixin {
   final bool nonPersonalizedAds;
 
   ///Server Side Verification - Info such as [userId] and [customData]
-  final ServerSideVerificationOptions? serverSideVerificationOptions;
+  final ServerSideVerificationOptions serverSideVerificationOptions;
 
   @mustCallSuper
   LoadShowAd({
@@ -277,10 +277,10 @@ abstract class LoadShowAd<T> with UniqueKeyMixin {
 /// information.
 class ServerSideVerificationOptions {
   /// The user id to be used in server-to-server reward callbacks.
-  final String? userId;
+  final String userId;
 
   /// The custom data to be used in server-to-server reward callbacks
-  final String? customData;
+  final String customData;
 
   /// Create [ServerSideVerificationOptions] with the userId or customData.
   ServerSideVerificationOptions({this.userId, this.customData});

@@ -74,7 +74,7 @@ class AppOpenAd extends LoadShowAd<FullScreenAdEvent> {
   AppOpenAd({
     Duration loadTimeout = kDefaultLoadTimeout,
     Duration timeout = kDefaultAdTimeout,
-    String? unitId,
+    String unitId,
     bool nonPersonalizedAds = kDefaultNonPersonalizedAds,
   }) : super(
           unitId: unitId,
@@ -130,23 +130,23 @@ class AppOpenAd extends LoadShowAd<FullScreenAdEvent> {
   /// For more info, [read the documentation](https://github.com/bdlukaa/native_admob_flutter/wiki/Creating-an-app-open-ad#load-the-ad)
   Future<bool> load({
     /// The ad unit id. If null, [MobileAds.appOpenAdUnitId] is used
-    String? unitId,
+    String unitId,
 
     /// The orientation. Avaiable orientations:\
     /// 1 - [ORIENTATION_PORTRAIT]\
     /// 2 - [ORIENTATION_LANDSCAPE]\
     ///
     /// If null, defaults to the current device orientation
-    int? orientation,
+    int orientation,
 
     /// Force to load an ad even if another is already avaiable
     bool force = false,
 
     /// The timeout of this ad. If null, defaults to 1 minute
-    Duration? timeout,
+    Duration timeout,
 
     /// Whether non-personalized ads should be enabled
-    bool? nonPersonalizedAds,
+    bool nonPersonalizedAds,
 
     /// The keywords of the ad
     List<String> keywords = const [],
@@ -160,7 +160,7 @@ class AppOpenAd extends LoadShowAd<FullScreenAdEvent> {
         'The orientation must be a valid orientation: $ORIENTATION_PORTRAIT, $ORIENTATION_LANDSCAPE',
       );
     } else {
-      final window = WidgetsBinding.instance!.window;
+      final window = WidgetsBinding.instance.window;
       final size = window.physicalSize / window.devicePixelRatio;
       final deviceOrientation = size.width > size.height
           ? Orientation.landscape
@@ -192,7 +192,7 @@ class AppOpenAd extends LoadShowAd<FullScreenAdEvent> {
           });
         return false;
       },
-    ))!;
+    ));
     if (loaded) lastLoadedTime = DateTime.now();
     return loaded;
   }
@@ -217,7 +217,7 @@ class AppOpenAd extends LoadShowAd<FullScreenAdEvent> {
     ensureAdNotDisposed();
     assertMobileAdsIsInitialized();
     ensureAdAvailable();
-    return (await channel.invokeMethod<bool>('showAd'))!;
+    return (await channel.invokeMethod<bool>('showAd'));
   }
 
   /// Dispose the ad to free up resouces.

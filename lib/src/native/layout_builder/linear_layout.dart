@@ -7,18 +7,18 @@ class AdLinearLayout extends AdView {
   final String orientation;
   final List<AdView> children;
 
-  final LayoutGravity? gravity;
+  final LayoutGravity gravity;
 
   AdLinearLayout({
     this.orientation = VERTICAL,
-    required this.children,
-    EdgeInsets? padding,
-    EdgeInsets? margin,
-    AdDecoration? decoration,
-    double? width,
-    double? height,
-    double? elevation,
-    Color? elevationColor,
+    @required this.children,
+    EdgeInsets padding,
+    EdgeInsets margin,
+    AdDecoration decoration,
+    double width,
+    double height,
+    double elevation,
+    Color elevationColor,
     this.gravity,
   }) : super(
           id: 'linear_layout',
@@ -60,15 +60,15 @@ String _layoutGravityName(LayoutGravity g) {
 }
 
 class AdSingleChildView extends AdLinearLayout {
-  AdSingleChildView({required AdView child}) : super(children: [child]);
+  AdSingleChildView({@required AdView child}) : super(children: [child]);
 }
 
 class AdExpanded extends AdSingleChildView {
   final double flex;
 
   AdExpanded({
-    required this.flex,
-    required AdView child,
+    @required this.flex,
+    @required AdView child,
   })  : assert(flex >= 0),
         super(child: child);
 

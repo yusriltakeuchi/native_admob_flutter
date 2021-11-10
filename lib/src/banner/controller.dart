@@ -222,7 +222,7 @@ class BannerAdController extends LoadShowAd<BannerAdEvent>
     bool force = false,
 
     /// The timeout of this ad. If null, defaults to 1 minute
-    Duration? timeout,
+    Duration timeout,
   }) async {
     ensureAdNotDisposed();
     assertMobileAdsIsInitialized();
@@ -236,7 +236,7 @@ class BannerAdController extends LoadShowAd<BannerAdEvent>
           });
         return false;
       },
-    ))!;
+    ));
     if (isLoaded) lastLoadedTime = DateTime.now();
     return isLoaded;
   }

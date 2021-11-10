@@ -18,13 +18,13 @@ class AdGradient {
   final String type;
 
   /// The colors of the gradients. There must be at least two colors
-  final List<Color>? colors;
+  final List<Color> colors;
 
   /// The orientation of the gradient. Default to `left to right`
-  final AdGradientOrientation? orientation;
+  final AdGradientOrientation orientation;
 
   /// The radius used by [AdRadialGradient]
-  final double? radialGradientRadius;
+  final double radialGradientRadius;
 
   /// The center point of the gadient used by [AdRadialGradient].
   ///
@@ -35,7 +35,7 @@ class AdGradient {
   final Alignment gradientCenter;
 
   AdGradient({
-    required this.type,
+    @required this.type,
     this.colors,
     this.orientation,
     this.gradientCenter = const Alignment(0.5, 0.5),
